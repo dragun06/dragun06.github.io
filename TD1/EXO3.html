@@ -1,0 +1,51 @@
+<html>
+<head>
+  <title>EX3</title>
+  <style>
+    #canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400"></canvas>
+  <p id="output"></p>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const output = document.getElementById('output');
+    let isDrawing = false;
+    let x = 0;
+    let y = 0;
+
+    function draw(event) {
+      if (!isDrawing) return;
+      const ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(event.offsetX, event.offsetY);
+      ctx.stroke();
+      x = event.offsetX;
+      y = event.offsetY;
+    }
+
+    canvas.addEventListener('touchstart', event => {
+      isDrawing = true;
+      x = event.touches[0].clientX;
+      y = event.touches[0].clientY;
+      output.innerHTML = `Touch Event: touchstart<br>X: ${x} Y: ${y}`;
+    });
+
+    canvas.addEventListener('touchmove', event => {
+      event.preventDefault();
+      draw(event);
+      output.innerHTML = `Touch Event: touchmove<br>X: ${x} Y: ${y}`;
+    });
+
+    canvas.addEventListener('touchend', event => {
+      isDrawing = false;
+      output.innerHTML = `Touch Event: touchend<br>X: ${x} Y: ${y}`;
+    });
+  </script>
+</body>
+</html>
