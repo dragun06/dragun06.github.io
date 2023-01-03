@@ -25,11 +25,8 @@
     function error(error) {
       console.error(error);
     }
-
-    // Get the current position
+    
     navigator.geolocation.getCurrentPosition(success, error);
-
-    // Watch the position and update the display when it changes
     navigator.geolocation.watchPosition(success, error);
   </script>
 </body>
