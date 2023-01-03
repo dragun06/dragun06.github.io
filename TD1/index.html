@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exo1</title>
+</head>
+<body>
+  <h1>Exo1</h1>
+  <div id="position"></div>
+  <div id="accuracy"></div>
+  <div id="speed"></div>
+  <div id="timestamp"></div>
+  <script>
+    function success(position) {
+      const { coords } = position;
+      const { latitude, longitude, altitude, accuracy, speed } = coords;
+      const { timestamp } = position;
+      const date = new Date(timestamp);
+
+      document.getElementById('position').innerHTML = `Position: ${latitude}, ${longitude}, ${altitude}`;
+      document.getElementById('accuracy').innerHTML = `Accuracy: ${accuracy}`;
+      document.getElementById('speed').innerHTML = `Speed: ${speed}`;
+      document.getElementById('timestamp').innerHTML = `Timestamp: ${date}`;
+    }
+
+    function error(error) {
+      console.error(error);
+    }
+
+    // Get the current position
+    navigator.geolocation.getCurrentPosition(success, error);
+
+    // Watch the position and update the display when it changes
+    navigator.geolocation.watchPosition(success, error);
+  </script>
+</body>
+</html>
