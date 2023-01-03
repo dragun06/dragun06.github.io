@@ -13,7 +13,7 @@
   <h1>Current Position</h1>
   <div id="location"></div>
   <script>
-    function success(position) {
+    function successPos(position) {
       const { coords } = position;
       const { latitude, longitude, altitude, accuracy, speed } = coords;
       const { timestamp } = position;
@@ -25,11 +25,11 @@
       document.getElementById('timestamp').innerHTML = `Timestamp: ${date}`;
     }
 
-    function error(error) {
+    function errorPos(error) {
       console.error(error);
     }
     
-    navigator.geolocation.watchPosition(success, error);
+    navigator.geolocation.watchPosition(successPos, errorPos);
 
     function success(position) {
         var latitude  = position.coords.latitude;
