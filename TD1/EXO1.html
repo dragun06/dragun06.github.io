@@ -9,6 +9,9 @@
   <div id="accuracy"></div>
   <div id="speed"></div>
   <div id="timestamp"></div>
+
+  <h1>Current Position</h1>
+  <div id="location"></div>
   <script>
     function success(position) {
       const { coords } = position;
@@ -26,8 +29,32 @@
       console.error(error);
     }
     
-    navigator.geolocation.getCurrentPosition(success, error);
     navigator.geolocation.watchPosition(success, error);
+
+    function success(position) {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var altitude  = position.coords.altitude;
+        var accuracy  = position.coords.accuracy;
+        var speed     = position.coords.speed;
+        var timestamp = position.timestamp;
+
+        var date = new Date(timestamp);
+
+        document.getElementById('location').innerHTML =
+          'Latitude: ' + latitude + '<br>' +
+          'Longitude: ' + longitude + '<br>' +
+          'Altitude: ' + altitude + '<br>' +
+          'Accuracy: ' + accuracy + '<br>' +
+          'Speed: ' + speed + '<br>' +
+          'Timestamp: ' + date;
+      }
+
+      function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      }
+
+      navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true});
   </script>
 </body>
 </html>
