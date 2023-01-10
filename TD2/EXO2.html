@@ -18,7 +18,7 @@
 
     var bermudaTriangle = L.polygon([[26.184854115730644, -80.11538010241617], [32.25277271502241, -64.86937525295237], [18.46936352424342, -66.7281631227401],], {color: 'red'}).addTo(map);
     var center = bermudaTriangle.getBounds().getCenter();
-    L.circle(center, {radius: 100000}).addTo(map);
+    L.circle(center, {radius: 950000}).addTo(map);
 
     var point1 = turf.point([5.374814946336128, 43.29835984870036]); // Marseille
     var point2 = turf.point([7.258902536984215, 43.70576240066641]); // Nice
