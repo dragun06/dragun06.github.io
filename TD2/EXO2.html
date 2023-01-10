@@ -9,13 +9,23 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
   <script>
-    var map = L.map('map').setView([51.505, -0.09], 13);
+    var map = L.map('map');
     L.tileLayer("https://stamen-tiles.a.ssl.fastly.net/toner/%7Bz%7D/%7Bx%7D/%7By%7D.png", {
                 attribution: "Map tiles by <a href='http://stamen.com/%27%3EStamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0%27%3ECC BY 3.0</a>. Data by <a href='http://openstreetmap.org/%27%3EOpenStreetMap</a>, under <a href='http://www.openstreetmap.org/copyright%27%3EODbL</a>.",
                 maxZoom: 18,
             }).addTo(map);
 
-    var bermudaTriangle = L.polygon([    [32.3078, -64.7505], [25.3444, -71.6693], [18.4207, -79.9956],], {color: 'red'}).addTo(map);
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+
+      L.marker([lat, lng]).addTo(map);
+
+      map.setView([lat, lng], 13);
+    });
+
+
+    var bermudaTriangle = L.polygon([[26.184854115730644, -80.11538010241617], [32.25277271502241, -64.86937525295237], [18.46936352424342, -66.7281631227401],], {color: 'red'}).addTo(map);
     var center = bermudaTriangle.getBounds().getCenter();
     L.circle(center, {radius: 100000}).addTo(map);
 
