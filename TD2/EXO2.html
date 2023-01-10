@@ -19,7 +19,7 @@
     L.circle(center, {radius: 100000}).addTo(map);
 
     var point1 = turf.point([5.374814946336128, 43.29835984870036]); // Marseille
-    var point2 = turf.point(7.258902536984215, 43.70576240066641]); // Nice
+    var point2 = turf.point([7.258902536984215, 43.70576240066641]); // Nice
     var distance = turf.distance(point1, point2) / 1000;
     console.log(distance + " kilometres");
     L.marker([5.374814946336128, 43.29835984870036]).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
