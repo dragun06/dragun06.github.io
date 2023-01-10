@@ -13,18 +13,18 @@
     var map = L.map('map');
     var layer = new L.StamenTileLayer("terrain");
     map.addLayer(layer);
-    map.setView([5.374814946336128, 43.29835984870036], 1);
+    map.setView([43.7031, 7.2661], 5);
     L.marker([43.7031, 7.2661]).addTo(map);
 
     var bermudaTriangle = L.polygon([[26.184854115730644, -80.11538010241617], [32.25277271502241, -64.86937525295237], [18.46936352424342, -66.7281631227401],], {color: 'red'}).addTo(map);
     var center = bermudaTriangle.getBounds().getCenter();
     L.circle(center, {radius: 950000}).addTo(map);
 
-    var point1 = turf.point([5.374814946336128, 43.29835984870036]); // Marseille
-    var point2 = turf.point([7.258902536984215, 43.70576240066641]); // Nice
-    var distance = turf.distance(point1, point2) / 1000;
+    var point1 = turf.point([43.29835984870036, 5.374814946336128]); // Marseille
+    var point2 = turf.point([43.70576240066641, 7.258902536984215]); // Nice
+    var distance = turf.distance(point1, point2);
     console.log(distance + " kilometres");
-    L.marker([5.374814946336128, 43.29835984870036]).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
+    L.marker([43.29835984870036, 5.374814946336128]).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
   </script>
 </body>
 </html>
