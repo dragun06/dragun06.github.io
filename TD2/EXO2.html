@@ -20,11 +20,7 @@
     var latlng = [position.coords.latitude, position.coords.longitude];
     var accuracy = position.coords.accuracy;
     
-    L.circle(latlng, accuracy, {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5
-    }).addTo(map);
+    L.circle(latlng, accuracy).addTo(map);
 });
 
     var marseille = [43.29835984870036, 5.374814946336128];
