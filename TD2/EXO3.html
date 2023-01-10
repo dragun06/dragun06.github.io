@@ -1,0 +1,45 @@
+<html>
+<head>
+   <title>Touch Events</title>
+   <style>
+      #canvas {
+         border: 1px solid black;
+      }
+   </style>
+</head>
+<body>
+   <canvas id="canvas" width="300" height="300"></canvas>
+   <div id="info"></div>
+   <script>
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+      var info = document.getElementById("info");
+      var isDrawing = false;
+      
+      canvas.addEventListener("touchstart", function(event) {
+         isDrawing = true;
+         var touch = event.touches[0];
+         var x = touch.clientX;
+         var y = touch.clientY;
+         context.moveTo(x, y);
+         info.innerHTML = "Type: touchstart, Position: (" + x + ", " + y + ")";
+      });
+      
+      canvas.addEventListener("touchmove", function(event) {
+         if (isDrawing) {
+            var touch = event.touches[0];
+            var x = touch.clientX;
+            var y = touch.clientY;
+            context.lineTo(x, y);
+            context.stroke();
+            info.innerHTML = "Type: touchmove, Position: (" + x + ", " + y + ")";
+         }
+      });
+      
+      canvas.addEventListener("touchend", function(event) {
+         isDrawing = false;
+         info.innerHTML = "Type: touchend";
+      });
+   </script>
+</body>
+</html>

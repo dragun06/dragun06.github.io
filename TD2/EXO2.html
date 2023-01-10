@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ex2</title>
+</head>
+<body ontouchstart="return false" deviceorientation deviceorientationabsolute devicemotion>
+    <h1>Orientation du smartphone</h1>
+    <p id="alpha"></p>
+    <p id="beta"></p>
+    <p id="gamma"></p>
+    <h1>Mouvement du smartphone</h1>
+    <p id="accelerationX"></p>
+    <p id="accelerationY"></p>
+    <p id="accelerationZ"></p>
+    <p id="rotationRateAlpha"></p>
+    <p id="rotationRateBeta"></p>
+    <p id="rotationRateGamma"></p>
+    <script>
+        window.addEventListener('deviceorientation', (event) => {
+            document.getElementById('alpha').textContent = event.alpha;
+            document.getElementById('beta').textContent = event.beta;
+            document.getElementById('gamma').textContent = event.gamma;
+        });
+
+        window.addEventListener('devicemotion', (event) => {
+            document.getElementById('accelerationX').textContent = event.acceleration.x;
+            document.getElementById('accelerationY').textContent = event.acceleration.y;
+            document.getElementById('accelerationZ').textContent = event.acceleration.z;
+            document.getElementById('rotationRateAlpha').textContent = event.rotationRate.alpha;
+            document.getElementById('rotationRateBeta').textContent = event.rotationRate.beta;
+            document.getElementById('rotationRateGamma').textContent = event.rotationRate.gamma;
+        });
+    </script>
+</body>
+</html>
