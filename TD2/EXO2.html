@@ -21,6 +21,7 @@
         var accuracy = position.coords.accuracy;
         console.log(accuracy);
         
+        L.marker(latlng).addTo(map);
         L.circle(latlng, accuracy).addTo(map);
     });
 
