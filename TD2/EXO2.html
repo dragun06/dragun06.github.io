@@ -13,8 +13,8 @@
     var map = L.map('map');
     var layer = new L.StamenTileLayer("terrain");
     map.addLayer(layer);
-    map.setView([43.7031, 7.2661], 5);
-    L.marker([43.7031, 7.2661]).addTo(map);
+    map.setView([43.70576240066641, 7.258902536984215], 5);
+    L.marker([43.70576240066641, 7.258902536984215]).addTo(map);
 
     var bermudaTriangle = L.polygon([[26.184854115730644, -80.11538010241617], [32.25277271502241, -64.86937525295237], [18.46936352424342, -66.7281631227401],], {color: 'red'}).addTo(map);
     var center = bermudaTriangle.getCenter();
