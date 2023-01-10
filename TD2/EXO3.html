@@ -20,6 +20,7 @@
    // Récupération des données de l'API INSEE
    $.getJSON('https://www.insee.fr/fr/metadonnees/cog/departement/DEP06-alpes-maritimes', function(data) {
       // Ajout des données à la carte
+      console.log(data);
       L.geoJSON(data, {
          style: {
                color: 'red',
