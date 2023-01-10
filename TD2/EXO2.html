@@ -20,11 +20,17 @@
     var center = bermudaTriangle.getBounds().getCenter();
     L.circle(center, {radius: 950000}).addTo(map);
 
-    var point1 = turf.point([43.29835984870036, 5.374814946336128]); // Marseille
-    var point2 = turf.point([43.70576240066641, 7.258902536984215]); // Nice
+    var marseille = [43.29835984870036, 5.374814946336128];
+    var nice = [43.70576240066641, 7.258902536984215];
+    var point1 = turf.point(marseille); // Marseille
+    var point2 = turf.point(nice); // Nice
     var distance = turf.distance(point1, point2);
     console.log(distance + " kilometres");
-    L.marker([43.29835984870036, 5.374814946336128]).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
+    var line = L.polyline([
+        marseille,  // Marseille
+        nice   // Nice
+    ]).addTo(map);
+    L.marker(nice).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
   </script>
 </body>
 </html>
