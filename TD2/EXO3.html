@@ -1,45 +1,31 @@
+<!DOCTYPE html>
 <html>
 <head>
-   <title>Touch Events</title>
-   <style>
-      #canvas {
-         border: 1px solid black;
-      }
-   </style>
+  <title>Exo3</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
 </head>
 <body>
-   <canvas id="canvas" width="300" height="300"></canvas>
-   <div id="info"></div>
-   <script>
-      var canvas = document.getElementById("canvas");
-      var context = canvas.getContext("2d");
-      var info = document.getElementById("info");
-      var isDrawing = false;
-      
-      canvas.addEventListener("touchstart", function(event) {
-         isDrawing = true;
-         var touch = event.touches[0];
-         var x = touch.clientX;
-         var y = touch.clientY;
-         context.moveTo(x, y);
-         info.innerHTML = "Type: touchstart, Position: (" + x + ", " + y + ")";
-      });
-      
-      canvas.addEventListener("touchmove", function(event) {
-         if (isDrawing) {
-            var touch = event.touches[0];
-            var x = touch.clientX;
-            var y = touch.clientY;
-            context.lineTo(x, y);
-            context.stroke();
-            info.innerHTML = "Type: touchmove, Position: (" + x + ", " + y + ")";
+  <div id="map" style="height: 800px;"></div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+   var map = L.map('map').setView([43.71, 7.26], 13);
+
+   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+   }).addTo(map);
+
+   $.getJSON("http://opendata.nicecotedazur.org/api/records/1.0/search/?dataset=stations-velos-nice&rows=100&facet=name&facet=address", function(data) {
+      var geojson = L.geoJson(data, {
+         pointToLayer: function (feature, latlng) {
+               return L.marker(latlng);
+         },
+         onEachFeature: function (feature, layer) {
+               layer.bindPopup(feature.properties.name);
          }
       });
-      
-      canvas.addEventListener("touchend", function(event) {
-         isDrawing = false;
-         info.innerHTML = "Type: touchend";
-      });
-   </script>
+      geojson.addTo(map);
+   });
+  </script>
 </body>
 </html>
