@@ -30,6 +30,10 @@
         marseille,  // Marseille
         nice   // Nice
     ]).addTo(map);
+    var line2 = L.polyline([
+    point1,  // Marseille
+    point2   // Nice
+    ]).addTo(map);
     L.marker(marseille).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
   </script>
 </body>
