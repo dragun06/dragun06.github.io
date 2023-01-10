@@ -9,7 +9,7 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   <script>
     var map = L.map('map').setView([51.505, -0.09], 13);
-    L.tileLayer("https://stamen-tiles.a.ssl.fastly.net/toner/%7Bz%7D/%7Bx%7D/%7By%7D.png", {attribution: "Map tiles by <a href='http://stamen.com/%27%3EStamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0%27%3ECC BY 3.0</a>. Data by <a href='http://openstreetmap.org/%27%3EOpenStreetMap</a>, under <a href='http://www.openstreetmap.org/copyright%27%3EODbL</a>.", maxZoom: 18,}).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
 
     var bermudaTriangle = L.polygon([    [32.3078, -64.7505], [25.3444, -71.6693], [18.4207, -79.9956],], {color: 'red'}).addTo(map);
     var center = bermudaTriangle.getBounds().getCenter();
