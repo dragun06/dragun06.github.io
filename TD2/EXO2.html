@@ -11,28 +11,18 @@
   <script src='https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js'></script>
   <script>
     var map = L.map('map');
-    var layer = new L.StamenTileLayer("toner");
+    var layer = new L.StamenTileLayer("terrain");
     map.addLayer(layer);
-
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-
-      L.marker([lat, lng]).addTo(map);
-
-      map.setView([lat, lng], 13);
-    });
-
 
     var bermudaTriangle = L.polygon([[26.184854115730644, -80.11538010241617], [32.25277271502241, -64.86937525295237], [18.46936352424342, -66.7281631227401],], {color: 'red'}).addTo(map);
     var center = bermudaTriangle.getBounds().getCenter();
     L.circle(center, {radius: 100000}).addTo(map);
 
-    var point1 = turf.point([5.3698, 43.2969]); // Marseille
-    var point2 = turf.point([7.2661, 43.7031]); // Nice
+    var point1 = turf.point([5.374814946336128, 43.29835984870036]); // Marseille
+    var point2 = turf.point(7.258902536984215, 43.70576240066641]); // Nice
     var distance = turf.distance(point1, point2) / 1000;
     console.log(distance + " kilometres");
-    L.marker([5.3698, 43.2969]).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
+    L.marker([5.374814946336128, 43.29835984870036]).bindPopup("Distance de Marseille à Nice :" + distance +" kilometres").addTo(map);
   </script>
 </body>
 </html>
