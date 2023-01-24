@@ -21,6 +21,10 @@
       const cube = new THREE.Mesh( geometry, material );
       scene.add( cube );
 
+      const light = new THREE.DirectionalLight( 0xffffff, 1 );
+      light.position.set( 1, 1, 1 );
+      scene.add( light );
+
       // Charger une texture
       const texture = new THREE.TextureLoader().load( 'media/cr7.jpg' );
 
