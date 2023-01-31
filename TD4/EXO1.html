@@ -42,24 +42,6 @@
 			earth.position.set(-5,0,0);
 			scene.add( earth ) ;
 
-			// Instantiate a loader
-			const loader = new GLTFLoader();
-
-			// White directional light at half intensity shining from the top.
-			const directionalLight = new THREE.DirectionalLight( 0xffffff, 1.5 );
-			scene.add( directionalLight );
-
-			const animate = function () {
-				requestAnimationFrame( animate );
-
-				cube.rotation.x += 0.01;
-				cube.rotation.y += 0.01;
-
-				renderer.render( scene, camera );
-			};
-
-			animate();
-
 		</script>
 	</body>
 </html>
