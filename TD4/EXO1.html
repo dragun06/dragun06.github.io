@@ -71,6 +71,8 @@
 			    
 			var raycaster = new THREE.Raycaster();
 			var mouse = new THREE.Vector2();
+			var pays = countries[i].translations.fra.common.replace(/ /g, "-");
+			console.log($pays);
 
 			document.addEventListener( 'click', onDocumentClick, false );
 
@@ -80,12 +82,11 @@
 			    mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 			    raycaster.setFromCamera( mouse, camera );
 			    var intersects = raycaster.intersectObjects( [marker] );
-			    var pays = countries[i].translations.fra.common.replace(/ /g, "-");
-			    console.log($pays);
+			    
 			    if ( intersects.length > 0 ) {
 			      window.open( 'https://fr.wikipedia.org/wiki/' + $pays, '_blank' );
 			    }
-			  }
+			}
                     }
                 }
             };
