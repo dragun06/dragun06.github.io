@@ -67,11 +67,26 @@
                         var marker = new THREE.Mesh(new THREE.SphereGeometry(0.1, 32, 32),
                             new THREE.MeshBasicMaterial({ map: textureE }));
                         marker.position.set(position.x, position.y, position.z);
-			marker.addEventListener("click", function() {
-			    window.open(`https://en.wikipedia.org/wiki/` + countries[i].translations.fra.common);
-			});
 			console.log(countries[i].translations.fra.common);
                         scene.add(marker);
+			    
+			var raycaster = new THREE.Raycaster();
+			var mouse = new THREE.Vector2();
+
+			document.addEventListener( 'click', onDocumentClick, false );
+
+			function onDocumentClick( event ) {
+			    event.preventDefault();
+			    mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+			    mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+			    raycaster.setFromCamera( mouse, camera );
+			    var intersects = raycaster.intersectObjects( [marker] );
+			    var pays = countries[i].translations.fra.common.replace(/ /g, "-");
+			    console.log(pays);
+			    if ( intersects.length > 0 ) {
+			      window.open( 'https://fr.wikipedia.org/wiki/' + $pays, '_blank' );
+			    }
+			  }
                     }
                 }
             };
