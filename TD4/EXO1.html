@@ -81,7 +81,7 @@
 			    raycaster.setFromCamera( mouse, camera );
 			    var intersects = raycaster.intersectObjects( [marker] );
 			    var pays = countries[i].translations.fra.common.replace(/ /g, "-");
-			    console.log(pays);
+			    console.log($pays);
 			    if ( intersects.length > 0 ) {
 			      window.open( 'https://fr.wikipedia.org/wiki/' + $pays, '_blank' );
 			    }
