@@ -2,7 +2,7 @@
 <html>
     <head>
 		<meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="viewport" content="width=device-width" />
 		<title>TP5</title>
 		<style>
 			body { margin: 0; }
@@ -13,10 +13,9 @@
     <body>
         <a-scene embedded arjs>
           <a-marker preset="hiro">
-            <a-entity position="0 0 -1.6" scale="0.15 0.15 0.15"
-              gltf-model="./models/soldat.glb"></a-entity>
+            <a-entity position="0 0 0" scale="1 1 1" gltf-model="./models/soldat.glb"></a-entity>
           </a-marker>
-          <a-entity id="localizedEntity" material='color: pink' geometry='primitive: box' scale="10 10 10"></a-entity>
+          <a-entity id="entity" material='color: pink' geometry='primitive: box' scale="10 10 10"></a-entity>
           <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
         </a-scene>
     </body>
@@ -25,11 +24,11 @@
             "DOMContentLoaded",
             function () {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                const lat = position.coords.latitude
-                const lng = position.coords.longitude
-                const entity = document.getElementById("localizedEntity")
+                const latitude = position.coords.latitude
+                const longitude = position.coords.longitude
+                const entity = document.getElementById("entity")
 
-                entity.setAttribute("gps-new-entity-place", `latitude: ${lat}; longitude: ${lng}`)
+                entity.setAttribute("gps-new-entity-place", `latitude: ${latitude}; longitude: ${longitude}`)
                 })
             },
             false
