@@ -15,7 +15,7 @@
   	{
     	"imports": {
      	 	"three": "https://unpkg.com/three@0.148.0/build/three.module.js",
-      	"three/addons/": "https://unpkg.com/three@0.148.0/examples/jsm/"
+      	    "three/addons/": "https://unpkg.com/three@0.148.0/examples/jsm/"
     	}
   	}
 	</script>
@@ -26,17 +26,17 @@
             
             const etoileTexture = new THREE.TextureLoader().load( './img/stars.jpg' );
             const soleilTexture = new THREE.TextureLoader().load( './img/sun.jpg' );
-            const mercureTexture = new THREE.TextureLoader().load( './img/mercure.jpg' );
+            const mercureTexture = new THREE.TextureLoader().load( './img/mercury.jpg' );
             const venusTexture = new THREE.TextureLoader().load( './img/venus.jpg' );
-            const terreTexture = new THREE.TextureLoader().load( './img/terre.jpg' );
+            const terreTexture = new THREE.TextureLoader().load( './img/earth.jpg' );
             const marsTexture = new THREE.TextureLoader().load( './img/mars.jpg' );
             const jupiterTexture = new THREE.TextureLoader().load( './img/jupiter.jpg' );
-            const saturneTexture = new THREE.TextureLoader().load( './img/saturne.jpg' );
+            const saturneTexture = new THREE.TextureLoader().load( './img/saturn.jpg' );
             const saturneAnneauTexture = new THREE.TextureLoader().load( './img/saturn_ring.png' );
             const uranusTexture = new THREE.TextureLoader().load( './img/uranus.jpg' );
             const uranusAnneauTexture = new THREE.TextureLoader().load( './img/uranus_ring.png' );
             const neptuneTexture = new THREE.TextureLoader().load( './img/neptune.jpg' );
-            const plutonTexture = new THREE.TextureLoader().load( './img/pluton.jpg' );
+            const plutonTexture = new THREE.TextureLoader().load( './img/pluto.jpg' );
 
             const renderer = new THREE.WebGLRenderer();
 
@@ -70,7 +70,7 @@
 
             const sunGeo = new THREE.SphereGeometry(16, 30, 30);
             const sunMat = new THREE.MeshBasicMaterial({
-                map: textureLoader.load(soleilTexture)
+                map: soleilTexture
             });
             const soleil = new THREE.Mesh(sunGeo, sunMat);
             scene.add(soleil);
@@ -80,6 +80,7 @@
                 const mat = new THREE.MeshStandardMaterial({
                     map: textureLoader.load(texture)
                 });
+                console.log(texture);
                 const mesh = new THREE.Mesh(geo, mat);
                 const obj = new THREE.Object3D();
                 obj.add(mesh);
