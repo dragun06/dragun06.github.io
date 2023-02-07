@@ -12,9 +12,11 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded arjs='sourceType: webcam;' renderer='antialias: true; alpha: true; precision: medium;'>
-
         <a-marker-camera type="pattern" patternUrl="./models/amus.patt"></a-marker-camera>
-		<a-entity camera></a-entity>
+		<a-entity camera type="pattern" patternUrl="./models/amus.patt"></a-entity>
+        <a-entity gps-entity-placeholder latitude="48.8588443" longitude="2.2943506">
+            <a-box position="0 0 0" material="color: yellow;"></a-box>
+        </a-entity>
 	</a-scene>
   </body>
 </html>
