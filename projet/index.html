@@ -24,8 +24,7 @@
 			import * as THREE from 'three';
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
             
-            const etoileTexture = new THREE.TextureLoader().load( './img/stars.jpg' );
-            const soleilTexture = new THREE.TextureLoader().load( './img/sun.jpg' );
+
 
             const renderer = new THREE.WebGLRenderer();
 
@@ -53,8 +52,11 @@
             const cubeTextureLoader = new THREE.CubeTextureLoader();
 
             const textureLoader = new THREE.TextureLoader();
+            const loader = new THREE.TextureLoader();
+            scene.background = loader.load( './img/etoile.jpg' )
 
             const sunGeo = new THREE.SphereGeometry(16, 30, 30);
+            const soleilTexture = new THREE.TextureLoader().load( './img/sun.jpg' );
             const sunMat = new THREE.MeshBasicMaterial({
                 map: soleilTexture
             });
